@@ -1,23 +1,11 @@
-import ClientComp from './ClientComp'
-
-const fetchData = async (url:string)=>{
-  const res = await fetch(url, {next: {revalidate : 0}});
-  const data = await res.json()
-  return data[0];
-}
-const urlObj = {
-  1: "https://jsonplaceholder.typicode.com/posts",
-  2: "https://jsonplaceholder.typicode.com/todos",
-  3: "https://jsonplaceholder.typicode.com/users",
-}
+import Navbar from "./Navbar"
 
 
-export default async function Home() {
-  const randomInt = Math.floor(Math.random() * 3) + 1;
-  const url = urlObj[randomInt as keyof typeof urlObj];
-  const data = await fetchData(url);
+export default function Home() {
 
-  return (
-    <ClientComp data={data}/>
-  )
+  return (<>
+  <div className=" bg-slate-800 h-screen w-screen">
+    <Navbar/>
+  </div>
+  </>)
 }
